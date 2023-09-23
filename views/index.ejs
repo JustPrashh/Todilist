@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=\, initial-scale=1.0">
+    <link rel="stylesheet" href="styles/main.css">
+    <title>Document</title>
+</head>
+<body>
+    <div class="container">
+        <div class="time">
+            <h1><%= DMY %></h1>
+        </div>
+        <div class="list-container">
+                <% if (locals.TodoList) { %>
+                <% TodoList.forEach(element => { %>
+                    <form action="/delete" method="post">
+                    <div class="item">
+                        <input type="checkbox" name="checkbox" value="<%= element._id %>" onchange="this.form.submit()">
+                        <p><%= element.Text %></p>
+                    </div>
+                </form>
+                <% }) %>
+                <% } %>
+                <form class="addItem" action="/post" method="post">
+                        <input class="New-Item" type="text" name="Activity" placeholder="New Item" required>
+                        <button type="submit">+</button>
+                </form>
+        </div>
+    </div>
+</body>
+</html>
